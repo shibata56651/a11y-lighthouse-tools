@@ -1,0 +1,13 @@
+.home {
+  background-color: gray;
+
+  &__text {
+    &--lg {
+      font-size: 4rem;
+    }
+
+    &--sm {
+      font-size: 1.8rem;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+	"name": "si-next-line-template-biome",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"format": "biome check --write app/*"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@biomejs/cli-darwin-arm64": "^1.9.4"
+	}
+}

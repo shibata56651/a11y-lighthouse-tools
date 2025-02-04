@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.12.2"
+
+      - name: Install dependencies
+        run: |
+          npm install --force
+          cd app
+          npm install
+
+      - name: Run Biome
+        run: |
+          npm run format
+
+      - name: Build
+        run: |
+          cd app
+          npm run build

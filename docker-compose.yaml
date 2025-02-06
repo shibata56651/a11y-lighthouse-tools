@@ -7,7 +7,7 @@ services:
       dockerfile: .docker/app/Dockerfile
     tty: true
     networks:
-      - si-next-line-template-nw
+      - a11y-lighthouse-tools
       - default
     volumes:
       - ./app:/home/node/app
@@ -22,5 +22,5 @@ services:
       - NODE_ENV=development
 
 networks:
-  si-next-line-template-nw:
+  a11y-lighthouse-tools:
     external: true

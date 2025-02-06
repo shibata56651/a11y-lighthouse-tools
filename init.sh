@@ -5,7 +5,7 @@ npm install --force
 cp .env.example ./.env
 cp .env.example ./app/.env
 
-docker network create si-next-line-template-nw
+docker network create a11y-lighthouse-tools
 
 docker compose build --no-cache
 

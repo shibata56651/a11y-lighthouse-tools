@@ -1,12 +1,16 @@
 {
-	"name": "si-next-line-template-biome",
-	"version": "0.1.0",
-	"private": true,
-	"scripts": {
-		"format": "biome check --write app/*"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"@biomejs/cli-darwin-arm64": "^1.9.4"
-	}
+  "name": "si-a11y-tools-biome",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "format": "biome check --write app/*"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@biomejs/cli-darwin-arm64": "^1.9.4"
+  },
+  "dependencies": {
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.3.0"
+  }
 }

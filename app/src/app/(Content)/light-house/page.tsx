@@ -18,10 +18,14 @@ const Page = () => {
 
   const handleEvaluate = async () => {
     try {
-      const response = await axios.post("/api", { urls });
+      const response = await axios.post("/api", { urls }, {
+        headers: { "Content-Type": "application/json" }
+      });
+
+      console.log("✅ API Response:", response.data); // ✅ APIのレスポンスを確認
       setResults(response.data);
     } catch (error) {
-      console.error("Error evaluating URLs:", error);
+      console.error("❌ API Request Error:", error);
     }
   };
 

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
@@ -12,6 +12,8 @@
     "@emotion/styled": "^11.14.0",
     "@line/liff": "^2.23.2",
     "@mui/material": "^6.4.3",
+    "chrome-launcher": "^1.1.2",
+    "lighthouse": "^12.3.0",
     "next": "15.1.6",
     "react": "19.0.0",
     "react-dom": "19.0.0",

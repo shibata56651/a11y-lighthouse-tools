@@ -2,6 +2,7 @@ export const runtime = "nodejs";
 
 import { NextRequest, NextResponse } from "next/server";
 import { launch } from "chrome-launcher";
+import { RunnerResult } from "lighthouse";
 
 // async function runLighthouse(url: string) {
 //   try {
@@ -105,7 +106,7 @@ async function runLighthouse(url: string) {
 
     console.log("🔍 Lighthouse options:", JSON.stringify(options, null, 2));
 
-    let runnerResult;
+    let runnerResult: RunnerResult | undefined;
 
     try {
       runnerResult = await lighthouse(parsedUrl.href, options);

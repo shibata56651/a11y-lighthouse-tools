@@ -74,7 +74,7 @@ const DropDown = () => {
     <div>
       <header className="relative h-14 lg:bg-gray-800 lg:flex lg:items-center lg:gap-8 lg:p-4 text-white">
         <div className="block lg:hidden w-14 h-14 bg-gray-800 absolute top-0 right-0 flex items-center justify-center">
-          <button className="w-10 h-10" aria-label={isHamburgerMenuOpen ? "メニューを閉じる" : "メニューを開く"} aria-expanded={isHamburgerMenuOpen} onClick={handleHamburgerMenuToggle}>
+          <button type="button" className="w-10 h-10" aria-label={isHamburgerMenuOpen ? "メニューを閉じる" : "メニューを開く"} aria-expanded={isHamburgerMenuOpen} onClick={handleHamburgerMenuToggle}>
             {isHamburgerMenuOpen ? <img className="w-full" src="/close.svg" alt="" /> : <img className="w-full" src="/hamburger.svg" alt="" />}
           </button>
         </div>
@@ -84,7 +84,7 @@ const DropDown = () => {
         <nav className={`pt-14 bg-gray-800 lg:block lg:pt-0 ${isHamburgerMenuOpen ? 'block' : 'hidden'}`}>
           <ul className="lg:flex">
             {headerMenuItemObject.map((item, index) => (
-              <li className="block h-8" key={index}>
+              <li className="block h-8" key={item.name}>
                 <div className="h-full"
                   onMouseEnter={() => {
                     handleMouseEnter(`dropDown-${index + 1}`);
@@ -114,7 +114,7 @@ const DropDown = () => {
                     <div>
                       <ul>
                         {item.items.map((subItem, subIndex) => (
-                          <li key={subIndex}><a className="block px-4 py-2 hover:bg-gray-200" href={subItem.href}>{subItem.name}</a></li>
+                          <li key={subItem.name}><a className="block px-4 py-2 hover:bg-gray-200" href={subItem.href}>{subItem.name}</a></li>
                         ))}
                       </ul>
                     </div>

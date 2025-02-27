@@ -76,7 +76,7 @@ async function runLighthouse(url: string) {
       throw new Error(`Invalid URL received: ${JSON.stringify(url)}`);
     }
 
-    let parsedUrl;
+    let parsedUrl: URL;
     try {
       parsedUrl = new URL(url);
     } catch (error) {
@@ -106,6 +106,7 @@ async function runLighthouse(url: string) {
     console.log("🔍 Lighthouse options:", JSON.stringify(options, null, 2));
 
     let runnerResult;
+
     try {
       runnerResult = await lighthouse(parsedUrl.href, options);
     } catch (error) {
@@ -167,7 +168,7 @@ export async function POST(req: NextRequest) {
 
     console.log("✅ Lighthouse Results:", results);
     return NextResponse.json(results, { status: 200 });
-  } catch (error: any) {
+  } catch (error) {
     console.error("❌ API Error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

@@ -47,8 +47,8 @@ async function runLighthouse(url: string) {
     try {
       runnerResult = await lighthouse(parsedUrl.href, options);
     } catch (error) {
-      console.error("❌ Lighthouse execution failed:", error.stack);
-      throw new Error(`Lighthouse execution error: ${error.message}`);
+      console.error("❌ Lighthouse execution failed:", error instanceof Error ? error.stack : error);
+      throw new Error(`Lighthouse execution error: ${error instanceof Error ? error.message : error}`);
     }
 
     if (!runnerResult || !runnerResult.lhr || !runnerResult.lhr.categories) {
@@ -64,7 +64,7 @@ async function runLighthouse(url: string) {
       url: parsedUrl.href,
       performance: categories.performance.score ? categories.performance.score * 100 : "N/A",
       seo: categories.seo.score ? categories.seo.score * 100 : "N/A",
-      pwa: categories.pwa ? categories.pwa.score * 100 : "N/A",
+      pwa: categories.pwa ? categories.pwa.score && categories.pwa.score * 100 : "N/A",
     };
 
     await chrome.kill();
@@ -80,11 +80,11 @@ async function runLighthouse(url: string) {
 
     const options = { logLevel: "info" as "info", output: "json" as "json", port: 9222 };
 
-    console.error(`❌ Lighthouse error for ${url}:`, error.stack);
+    console.error("❌ Lighthouse execution failed:", error instanceof Error ? error.stack : error);
 
     // return { url, error: `Lighthouse failed: ${error.message}` };
 
-    return { url, error: `Lighthouse failed: ${error.message}`, chromePort: `🚀 Chrome launched on port: ${chrome.port}`, options: `🔍 Lighthouse options: ${JSON.stringify(options, null, 2)}` };
+    return { url, error: `Lighthouse failed: ${error instanceof Error ? error.message : error}`, chromePort: `🚀 Chrome launched on port: ${chrome.port}`, options: `🔍 Lighthouse options: ${JSON.stringify(options, null, 2)}` };
   }
 }
 
@@ -107,6 +107,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(results, { status: 200 });
   } catch (error) {
     console.error("❌ API Error:", error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ error: error instanceof Error ? error.message : error }, { status: 500 });
   }
 }

@@ -4,70 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { launch } from "chrome-launcher";
 import { RunnerResult } from "lighthouse";
 
-// async function runLighthouse(url: string) {
-//   try {
-//     console.log(`🚀 Running Lighthouse for: ${url}`);
-
-//     if (!url || typeof url !== "string") {
-//       console.error("❌ Invalid URL received:", url);
-//       throw new Error("Invalid URL received");
-//     }
-
-//     const lighthouse = (await import("lighthouse")).default;
-//     const chrome = await launch({ chromeFlags: ["--headless", "--disable-gpu", "--no-sandbox"] });
-
-//     console.log("🚀 Chrome launched on port:", chrome.port);
-
-//     const options = { logLevel: "info" as "info", output: "json" as "json", port: Number(chrome.port) };
-
-//     if (!options.port) {
-//       console.error("❌ Lighthouse options error: Invalid port");
-//       throw new Error("Lighthouse port is invalid");
-//     }
-
-//     console.log("🔍 Lighthouse options:", options);
-
-//     const runnerResult = await lighthouse(url, options);
-
-//     if (!runnerResult || !runnerResult.lhr || !runnerResult.lhr.categories) {
-//       console.error("❌ No valid Lighthouse result for:", url);
-//       throw new Error("Lighthouse did not return a valid result");
-//     }
-
-//     console.log("✅ Lighthouse result received for:", url);
-
-//     const categories = runnerResult.lhr.categories;
-//     await chrome.kill();
-
-//     return {
-//       url,
-//       performance: categories.performance.score ? categories.performance.score * 100 : "N/A",
-//       seo: categories.seo.score ? categories.seo.score * 100 : "N/A",
-//       pwa: categories.pwa ? categories.pwa.score * 100 : "N/A",
-//     };
-//   } catch (error) {
-//     const lighthouse = (await import("lighthouse")).default;
-//     const chrome = await launch({ chromeFlags: ["--headless", "--disable-gpu", "--no-sandbox"] });
-
-//     const options = { logLevel: "info" as "info", output: "json" as "json", port: Number(chrome.port) };
-
-//     if (!options.port) {
-//       console.error(`❌ optionsPort error for ${url}:`, error);
-//       return { url, error: `options.port Error` };
-//     }
-
-//     const runnerResult = await lighthouse(url, options);
-
-//     if (!runnerResult || !runnerResult.lhr || !runnerResult.lhr.categories) {
-//       console.error("❌ No valid Lighthouse result for:", url);
-//       return { url, error: `Lighthouse did not return a valid result` };
-//     }
-
-//     console.error(`❌ Lighthouse error for ${url}:`, error);
-//     return { url, error: `Lighthouse failed: ${error.message}` };
-//   }
-// }
-
 async function runLighthouse(url: string) {
   try {
     console.log(`🚀 Running Lighthouse for: ${url}`);
@@ -87,7 +23,7 @@ async function runLighthouse(url: string) {
 
     console.log("🔍 Parsed URL:", parsedUrl.href);
 
-    const lighthouse = (await import("lighthouse")).default;
+    const lighthouse = await import("lighthouse").then((mod) => mod.default);
     const chrome = await launch({ port: 9222, chromeFlags: ["--headless", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "--remote-debugging-port=0"],
       chromePath: "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     });

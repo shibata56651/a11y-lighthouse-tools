@@ -16,7 +16,7 @@ export default function Page() {
           このリポジトリは実務等でよく使用するレイアウトや機能をサンプルコードとして参照できるようにまとめるリポジトリです。
         </p>
         <div className={'mt-4 mb-4'}>
-          <button onClick={() => router.push(`/light-house/`)}>
+          <button type='button' onClick={() => router.push('/light-house/')}>
             ・ReactHookFormContextを使用し、フォームの値を保持しながら画面遷移するサンプル
           </button>
         </div>

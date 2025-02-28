@@ -18,10 +18,14 @@ const Page = () => {
 
   const handleEvaluate = async () => {
     try {
-      const response = await axios.post("/api", { urls });
+      const response = await axios.post("/api", { urls }, {
+        headers: { "Content-Type": "application/json" }
+      });
+
+      console.log("✅ API Response:", response.data); // ✅ APIのレスポンスを確認
       setResults(response.data);
     } catch (error) {
-      console.error("Error evaluating URLs:", error);
+      console.error("❌ API Request Error:", error);
     }
   };
 
@@ -32,11 +36,11 @@ const Page = () => {
       </Typography>
       <Box mb={2}>
         {urls.map((url, index) => (
-          <Box display="flex" alignItems="center" mb={1} key={index}>
+          <Box display="flex" alignItems="center" mb={1} key={url}>
             <TextField
               fullWidth
               value={url}
-              onChange={(e: any) => handleChange(index, e.target.value)}
+              onChange={(e) => handleChange(index, e.target.value)}
               placeholder="Enter URL"
             />
             <Button onClick={() => handleRemoveUrl(index)} disabled={urls.length === 1}>
@@ -57,7 +61,7 @@ const Page = () => {
 					seo: number;
 					pwa: number | string;
 				}, index) => (
-          <Card key={index} variant="outlined" style={{ marginTop: 8 }}>
+          <Card key={result.url} variant="outlined" style={{ marginTop: 8 }}>
             <CardContent>
               <Typography variant="h6">{result.url}</Typography>
               <Typography>Performance: {result.performance}</Typography>

@@ -29,11 +29,6 @@ interface AuditData {
   title: string;
 }
 
-interface DiagnosticsData {
-  type: string;
-  items: any[];
-}
-
 interface LighthouseResult {
   url: string;
   categories: CategoryScores;
@@ -43,7 +38,6 @@ interface LighthouseResult {
     totalBlockingTime?: AuditData;
     cumulativeLayoutShift?: AuditData;
     speedIndex?: AuditData;
-    diagnostics?: DiagnosticsData;
   };
 }
 
@@ -103,7 +97,7 @@ const Page = () => {
       </Typography>
       <Box mb={2}>
         {urls.map((url, index) => (
-          <Box key={index} display="flex" alignItems="center" mb={1}>
+          <Box key={url} display="flex" alignItems="center" mb={1}>
             <TextField
               fullWidth
               value={url}
@@ -126,7 +120,7 @@ const Page = () => {
           Results
         </Typography>
         {results.map((result, index) => (
-          <Card key={index} variant="outlined" style={{ marginTop: 16 }}>
+          <Card key={result.url} variant="outlined" style={{ marginTop: 16 }}>
             <CardContent>
               <Typography variant="h6">{result.url}</Typography>
               <Typography variant="subtitle1">
@@ -185,15 +179,6 @@ const Page = () => {
                   </Typography>
                 )}
               </Box>
-
-              {result.audits.diagnostics && (
-                <Box mt={2}>
-                  <Typography variant="h6">Diagnostics</Typography>
-                  <pre style={{ backgroundColor: "#f5f5f5", padding: "8px", overflowX: "auto" }}>
-                    {JSON.stringify(result.audits.diagnostics, null, 2)}
-                  </pre>
-                </Box>
-              )}
             </CardContent>
           </Card>
         ))}

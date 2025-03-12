@@ -3,7 +3,7 @@ export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import { launch, LaunchedChrome, Launcher } from "chrome-launcher";
 
-export async function runLighthouse(url: string) {
+async function runLighthouse(url: string) {
   let chrome: LaunchedChrome | null = null;
   let chromePath = "/usr/bin/chromium";
 

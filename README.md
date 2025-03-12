@@ -23,18 +23,3 @@ biome の実行はコンテナではなくホストマシン側で行うため�
 ```bash
 npm run format
 ```
-
-## ブラウザ
-
-https://liff.line.me/2006520503-YQw3l2WK
-
-## 追加したライブラリ
-
-- LIFF 認証
-  - [@line/liff](https://www.npmjs.com/package/@line/liff)
-- scss
-  - [scss](https://www.npmjs.com/package/sass)
-
-## ディレクトリ構成
-
-- [参考](https://www.notion.so/bulletgroup/Next-af4ff735fc8c48f28817307ed976664b?pvs=4#6480213f22da47ed930000e801b2ab35)

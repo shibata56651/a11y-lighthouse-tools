@@ -5,7 +5,7 @@ import { launch, LaunchedChrome, Launcher } from "chrome-launcher";
 
 async function runLighthouse(url: string) {
   let chrome: LaunchedChrome | null = null;
-  let chromePath = "/usr/bin/chromium";
+  let chromePath = "/usr/bin/google-chrome";
 
   try {
     console.log(`🚀 Running Lighthouse for: ${url}`);

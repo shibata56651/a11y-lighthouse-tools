@@ -1,29 +1,3 @@
-# a11yツール集
-
-light-houseのチェックツールから、a11yを担保したパーツのテンプレートを用意するリポジトリです。
-
-## 初回起動方法
-
-```bash
-# プロジェクトルートに移動して
-. ./init.sh
-```
-
-## 通常起動方法
-
-```bash
-docker compose up -d
-```
-
-## Biome 実行
-
-biome の実行はコンテナではなくホストマシン側で行うため、ホストマシン側にパッケージをインストールします。
-以下のコマンドでフォーマット・静的検査を行います
-
-```bash
-npm run format
-```
-
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

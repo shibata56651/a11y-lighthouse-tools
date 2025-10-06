@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Lighthouse DevTools Extension",
+  "version": "1.0.0",
+  "description": "DevTools extension for running Lighthouse audits on multiple URLs",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "devtools_page": "devtools.html",
+  "permissions": [
+    "scripting",
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["audit-script.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

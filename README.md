@@ -71,17 +71,3 @@
 ### PWA
 - Progressive Web Appとしての機能評価
 - Service Worker、マニフェストファイルの確認
-
-## 貢献
-
-プロジェクトへの貢献を歓迎します！
-
-1. このリポジトリをフォーク
-2. 機能ブランチを作成 (`git checkout -b feature/amazing-feature`)
-3. 変更をコミット (`git commit -m 'Add amazing feature'`)
-4. ブランチにプッシュ (`git push origin feature/amazing-feature`)
-5. Pull Requestを作成
-
-## ライセンス
-
-このプロジェクトはMITライセンスの下で公開されています。
